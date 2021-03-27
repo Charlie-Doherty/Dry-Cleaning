@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+:root{
+    --primary-color: #3321cc;
+    --gradient-color: rgba(0, 0, 0, 0.5);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+p{
+    line-height: 1.5;
+	color: #333;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    padding: 0 4em;
+    min-height: 5em;
+	background-color: var(--primary-color);
+}
+
+nav ul{
+    display: flex;
+    list-style-type: none;
+}
+
+nav ul > * + *{
+    margin-left: 1em;
+}
+
+nav a{
+    font-size: 0.9rem;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+	transition: 300ms opacity linear;
+}
+
+nav a:hover, .active{
+    opacity: 0.6;
+}
+
+.lines{
+	cursor: pointer;
+	display: none;
+    padding: 1em 0;
+}
+
+.line{
+	width: 2.2em;
+    height: 0.25em;
+	background-color: #fff;
+	position: relative;
+}
+
+.line::before{
+	content: '';
+	width: 2.2em;
+    height: 0.25em;
+	background-color: #fff;
+	position: absolute;
+	top: -220%;
+	transition: 300ms top ease-in-out;
+}
+
+.line::after{
+	content: '';
+	width: 2.2em;
+    height: 0.25em;
+	background-color: #fff;
+	position: absolute;
+	top: 220%;
+	transition: 300ms top ease-in-out;
+}
+
+.open ~ .lines .line{
+	background-color: transparent;
+}
+
+.open ~ .lines .line::before{
+    top: 0;
+	transform: rotate(45deg);
+	transition: 300ms transform ease-in-out;
+}
+
+.open ~ .lines .line::after{
+    top: 0;
+	transform: rotate(-45deg);
+	transition: 300ms transform ease-in-out;
+}
+
+main{
+    padding: 2.5em 4em 1.5em;
+}
+
+h2{
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin: 0.7em 0 1em;
+}
+
+.item{
+    display: flex;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 1em;
+}
+
+.name, .price{
+    min-width: 12em;
+}
+
+footer{
+    display: flex;
+    align-items: center;
+    padding: 0 4em;
+    min-height: 5em;
+    background-color: var(--primary-color);
+}
+
+footer p{
+	color: #fff;
+	font-size: 0.9rem;
+}
+
+@media(max-width:768px){
+    header{
+        padding: 0 2em;
+    }
+
+    nav ul{
+        padding: 0 2em;
+        background-color: var(--primary-color);
+        flex-direction: column;
+        position: absolute;
+        z-index: 10;
+        top: 5em;
+        right: 0;
+        left: 0;
+        height: 0;
+        overflow: hidden;
+        transition: 300ms height ease-in-out;
+    }
+
+    nav ul > * + *{
+        margin: 1em 0 0;
+    }
+
+    .open{
+        height: 9em;
+    }
+
+    .lines{
+        display: inline-block;
+    }
+
+    main{
+        padding: 2.5em 2em 1.5em;
+        text-align: center;
+    }
+
+    h2{
+        font-size: 1.5rem;
+    }
+
+    .item{
+        justify-content: center;
+    }
+
+    .name, .price{
+        min-width: 50%;
+    }
+
+    main p{
+        font-size: 1rem;
+    }
+
+    footer{
+        padding: 0 2em;
+    }
+
+    footer p{
+        font-size: 0.8rem;
+    }
+}
+
+@media(max-width:425px){
+    header{
+        padding: 0 1em;
+    }
+
+    main{
+        padding: 2.5em 1em 1.5em;
+    }
+
+    footer{
+        padding: 0 1em;
+        justify-content: center;
+    }
+}
